@@ -8,7 +8,9 @@
 <body>
     <h1>Webassembly Demo</h1>
     <script>
-
+        WebAssembly.instantiateStreaming(fetch('program.wasm')).then( wasm => {
+            console.log('gfdg')
+        });
     </script>
 </body>
 </html>
