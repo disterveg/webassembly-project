@@ -1,0 +1,23 @@
+{
+  "name": "webassembly-project",
+  "version": "1.0.0",
+  "description": "first webassembly project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/disterveg/webassembly-project.git"
+  },
+  "keywords": [
+    "js",
+    "javascript",
+    "webassembly"
+  ],
+  "author": "disterveg",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
