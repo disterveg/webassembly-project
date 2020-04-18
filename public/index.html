@@ -8,6 +8,8 @@
 <body>
     <h1>Webassembly Demo</h1>
     <script>
+        const wasmMemory = new WebAssembly.Memory({initial: 2});
+
         const readMemStr = (offset, length) => {
             const strBuffer = new Uint8Array(wasm.instance.exports.memory.buffer, offset, length);
             const str = new TextDecoder().decode(strBuffer);
@@ -23,10 +25,11 @@
             env: {
                 consoleLog: console.log, //calling import
                 strLog: readMemStr,
-                numLog: console.log
+                numLog: console.log,
+                memory: wasmMemory
             }
         };
-        WebAssembly.instantiateStreaming(fetch('program.wasm'), imports)
+        WebAssembly.instantiateStreaming(fetch('main.wasm'), imports)
         .then( wasm => {
             console.log('gfdg');
             window.wasm = wasm;
@@ -36,7 +39,7 @@
 
             wasm.instance.exports.getDoubleNumber(3); //Imports Calling JavaScript from C
 
-            console.log(wasm.instance.exports.memory);
+            console.log(wasm.instance.exports.memory.buffer); //ArrayBuffer 131072 - Custom Memory Imports
             console.log(wasm.instance.exports.greet());
         });
     </script>
