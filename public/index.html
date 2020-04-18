@@ -8,8 +8,20 @@
 <body>
     <h1>Webassembly Demo</h1>
     <script>
-        WebAssembly.instantiateStreaming(fetch('program.wasm')).then( wasm => {
-            console.log('gfdg')
+        const imports = {
+            env: {
+                consoleLog: console.log
+            }
+        }
+        WebAssembly.instantiateStreaming(fetch('program.wasm'), imports)
+        .then( wasm => {
+            console.log('gfdg');
+            window.wasm = wasm;
+            wasm.instance.exports.main(); //Exports Calling C from JavaScript
+
+            console.log(WebAssembly.Module.imports(wasm.module)); //check imports
+
+            wasm.instance.exports.getDoubleNumber(3); //Imports Calling JavaScript from C
         });
     </script>
 </body>
