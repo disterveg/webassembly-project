@@ -7,7 +7,10 @@
 </head>
 <body>
     <h1>Webassembly Demo</h1>
-    <script></script>
     <script src="demo.js"></script>
+    <script>
+         //emcc lib/demo.c -s WASM=1 –-post-js public/ready.js -s EXPORTED_FUNCTIONS="['_getNUM', '_main']" -o public/demo.js
+        //_getNUM(); //Exporting C functions to JavaScript 22 
+    </script>
 </body>
 </html>
