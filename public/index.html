@@ -9,7 +9,9 @@
     <h1>Webassembly Demo</h1>
     <script src="string.js"></script>
     <script>
-        _getNumber() //run debugger js and call warn log
+        Module['onRuntimeInitialized'] = () => {
+            console.log('Run runtime', _getStr());
+        }
     </script>
 </body>
 </html>
