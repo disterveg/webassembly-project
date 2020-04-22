@@ -9,3 +9,13 @@ Overview webassembly's potential, such as:
  - Runtime initialization WASM,
  - Micro Benchmark Prime Numbers,
  - Compilation Cmake
+
+To run this project first do:
+````
+npm install
+````
+After that do:
+````
+make dev
+````
+Open browser http://localhost:2222/
